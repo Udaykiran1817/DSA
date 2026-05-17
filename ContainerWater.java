@@ -1,0 +1,31 @@
+public class ContainerWater {
+   public static void main(String[] args) {
+      int[] heights = { 1, 8, 6, 2, 5, 4, 8, 3, 7 };
+      int result = Demo.test(heights);
+      System.out.println(result);
+   }
+}
+
+class Demo {
+   public static int test(int[] heights) {
+      int n = heights.length - 1;
+      int left = 0;
+      int right = n;
+      int maxArea = 0;
+
+      while (left < right) {
+         int height = Math.min(heights[left], heights[right]);
+         int width = right - left;
+         int area = width * height;
+
+         maxArea = Math.max(area, maxArea);
+
+         if (heights[left] <= heights[right]) {
+            left++;
+         } else {
+            right--;
+         }
+      }
+      return maxArea;
+   }
+}
